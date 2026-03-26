@@ -1,5 +1,6 @@
 import { SITE } from "./src/config";
 import { defineConfig } from "astro/config";
+import mdx from '@astrojs/mdx';
 import fs from "node:fs";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap, { type SitemapOptions } from "@astrojs/sitemap";
@@ -123,6 +124,7 @@ export default defineConfig({
     expressiveCode(expressiveCodeOption),
     minify(),
     compressor({ gzip: true, brotli: true }),
+    mdx(),
   ],
   markdown: {
     remarkPlugins: [remarkMath],

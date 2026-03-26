@@ -1,0 +1,43 @@
+---
+layout: ../layouts/AboutLayout.astro
+title: "About Me"
+---
+
+import { Image } from 'astro:assets';
+import myAvatar from '../assets/images/avatar.jpg';
+
+<div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+  <Image 
+    src={myAvatar} 
+    alt="Developer Avatar" 
+    width={150} 
+    height={150} 
+    class="rounded-none shadow-lg border-4 border-white object-cover"
+  />
+  <div>
+    <h1 style="margin: 0;">Hi, I'm 👋</h1>
+    <p style="font-size: 1.1rem; color: gray; margin-top: 0.5rem;">
+      MSc Student in AI x Geophysicist 
+    </p>
+  </div>
+</div>
+
+
+## 🎓 Education
+- **Msc in Artificial Intelligence**, University of Science and Technology of China, 2026 ~ 
+- **BSc in Geophysics**, China University of Petroleum (Beijing), 2022-2026
+
+## 💻 Featured Projects
+- [Fomo.jl](https://github.com/zzzzswh/Fomo.jl) 2D/3D Elastic/Acoustic Wave Equation Solver based on CUDA.jl.   
+  Using staggered grid & Hybrid Absorbing Boundary Conditions(HABC).
+
+## 🔬 Research Interests
+- Seismic modeling and processing
+- Artificial Intelligence
+- Scientific visualization
+
+## 🛠 Skills
+
+- **Languages:** Python, Julia, C++, MATLAB
+- **Frameworks & Tools:** PyTorch, Devito, NumPy, CUDA
+- **Domain Expertise:** Seismic forward modeling,
