@@ -153,7 +153,7 @@ export default defineConfig({
     // },
   },
   vite: {
-    plugins: [...(tailwindcss() as any)],
+    plugins: [...tailwindcss()] as any,
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
