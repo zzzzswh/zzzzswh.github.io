@@ -232,7 +232,9 @@ const nextPost =
     {
       comments && (
         <div class="mt-8">
-          <script src="https://giscus.app/client.js"
+          <script
+            is:inline
+            src="https://giscus.app/client.js"
             data-repo="zzzzswh/zzzzswh.github.io"
             data-repo-id="R_kgDORwWy6w"
             data-category="Announcements"
@@ -245,12 +247,11 @@ const nextPost =
             data-theme="preferred_color_scheme"
             data-lang="zh-CN"
             crossorigin="anonymous"
-            async>
-          </script>
+            async
+          ></script>
         </div>
       )
     }
-  </main>
   </main>
 
   <!-- Sidebar -->
