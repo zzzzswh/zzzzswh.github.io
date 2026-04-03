@@ -1,17 +1,17 @@
 ---
-title: "关于En/Decoder&Latent space的一些思考体会"
+title: "从AE到VQ-VAE——模型的矛盾"
 author: zzzzswh
 pubDatetime: 2026-03-04
-description: "做毕设的一些小思考"
+description: "做毕设的一些小思考，diffusion模型里的这个VQ环节总是让我不理解"
 categories: ["科研碎片Snapshot"]
 tags:
-  - geophysics
-  - seismic
-  - visualization
-  - Deepwave
+  - AE
+  - VQ-VAE
+  - VQ
+  - AI
   - 中文
 featured: true
-date: 2026-03-04
+date: 2026-04-03
 comments: true
 ---
 
