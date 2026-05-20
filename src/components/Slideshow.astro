@@ -1,0 +1,126 @@
+---
+import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
+import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
+
+export interface Props {
+  title: string;
+  images: string[];
+}
+
+const { title, images } = Astro.props;
+
+// Generate a unique DOM id for this slideshow instance
+const uid = Math.random().toString(36).slice(2, 8);
+const containerId = `slideshow-${uid}`;
+---
+
+<section
+  id={containerId}
+  class="my-10 not-prose rounded-lg border border-border bg-muted/40 p-4 sm:p-6"
+>
+  <h3 class="mb-4 text-center text-lg font-semibold text-foreground sm:text-xl">
+    {title}
+  </h3>
+
+  <div class="relative overflow-hidden rounded-md bg-background">
+    <!-- image slot -->
+    {
+      images.map((src, i) => (
+        <img
+          src={src}
+          alt={`${title} — 第 ${i + 1} 页`}
+          loading="lazy"
+          decoding="async"
+          class:list={[
+            "slideshow-img mx-auto max-h-[70vh] w-auto object-contain transition-opacity duration-300",
+            i === 0 ? "block" : "hidden",
+          ]}
+        />
+      ))
+    }
+
+    <!-- prev button -->
+    <button
+      class="slideshow-prev absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-muted/80 p-2 text-foreground opacity-70 shadow transition hover:opacity-100 disabled:opacity-30"
+      aria-label="上一页"
+    >
+      <IconChevronLeft class="size-5" />
+    </button>
+
+    <!-- next button -->
+    <button
+      class="slideshow-next absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-muted/80 p-2 text-foreground opacity-70 shadow transition hover:opacity-100 disabled:opacity-30"
+      aria-label="下一页"
+    >
+      <IconChevronRight class="size-5" />
+    </button>
+  </div>
+
+  <!-- counter -->
+  <p class="slideshow-counter mt-3 text-center text-sm text-foreground opacity-60">
+    1 / {images.length}
+  </p>
+</section>
+
+<script define:vars={{ containerId }}>
+  (function () {
+    const section = document.getElementById(containerId);
+    if (!section) return;
+
+    const imgs = section.querySelectorAll(".slideshow-img");
+    const prevBtn = section.querySelector(".slideshow-prev");
+    const nextBtn = section.querySelector(".slideshow-next");
+    const counter = section.querySelector(".slideshow-counter");
+    const total = imgs.length;
+    let current = 0;
+
+    function show(index) {
+      imgs.forEach((img, i) => {
+        img.classList.toggle("hidden", i !== index);
+        img.classList.toggle("block", i === index);
+      });
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.disabled = index === total - 1;
+      if (counter) counter.textContent = `${index + 1} / ${total}`;
+    }
+
+    prevBtn?.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        show(current);
+      }
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      if (current < total - 1) {
+        current++;
+        show(current);
+      }
+    });
+
+    // Keyboard navigation (only when this section is in/near the viewport)
+    document.addEventListener("keydown", (e) => {
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (current > 0) {
+          current--;
+          show(current);
+        }
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (current < total - 1) {
+          current++;
+          show(current);
+        }
+      }
+    });
+
+    // Init: disable prev on first slide
+    if (prevBtn) prevBtn.disabled = true;
+    if (nextBtn && total <= 1) nextBtn.disabled = true;
+  })();
+</script>

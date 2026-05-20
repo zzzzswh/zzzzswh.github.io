@@ -1,0 +1,61 @@
+---
+title: "FNO (Fourier Neural Operator) 图解"
+author: zzzzswh
+pubDatetime: 2026-05-20
+description: "动画图解 Fourier Neural Operator 的核心思想"
+categories: ["科研碎片Snapshot"]
+tags:
+  - deep-learning
+  - operator-learning
+  - FNO
+  - Fourier-transform
+  - 中文
+featured: true
+date: 2026-05-20
+comments: true
+toc: false
+---
+
+import Slideshow from "@/components/Slideshow.astro";
+
+export const slides = (start, end) =>
+  Array.from({ length: end - start + 1 }, (_, i) =>
+    `/assets/fno-slides/slide-${String(start + i).padStart(2, "0")}.png`
+  );
+
+Fourier Neural Operator (FNO) 是一种在傅里叶空间中学习偏微分方程解算子的深度学习方法。以下用 PPT 图解逐步拆解其核心结构。
+
+---
+
+## 输入的形状
+
+<Slideshow title="输入的形状" images={slides(2, 9)} />
+
+## 2D 傅里叶变换
+
+<Slideshow title="2D 傅里叶变换" images={slides(10, 13)} />
+
+## 通道维度压缩
+
+<Slideshow title="通道维度压缩" images={slides(14, 19)} />
+
+## FNO 网络架构
+
+<Slideshow title="FNO 网络架构" images={slides(20, 30)} />
+
+说实话这个网络的优点在于，他用这个DFT的变换方式，硬编码了周期边界条件，非常适配NS方程。  
+
+但在别的边界条件下，就没什么用了。
+
+而且它也只适配一些非常简单的情况，比如说论文里的这个无源均匀介质。  
+
+领域个好处是NS方程可以拆出一个局部影响和全局影响，这个神经网络正好可以加上这个全局影响，而
+一般算法做不到这一点。  
+
+另外一点，也是论文非常推崇的一点，就是它可以无视分辨率。它不能提供更高分辨率的信息，但是可以
+适配不同输入输出的结果，也很有意思。  
+
+总的来说吧，就我目前浅薄的认识，我觉得这个技术并没有什么突破，目前看不出能解决什么问题。
+可以提升简单场景的效率，但是应用场景也不多。
+
+唯一有用的可能就是这个无视分辨率这一点了。
