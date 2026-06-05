@@ -6,38 +6,191 @@ title: "About Me"
 import { Image } from 'astro:assets';
 import myAvatar from '../assets/images/avatar.jpg';
 
-<div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
-  <Image 
-    src={myAvatar} 
-    alt="Developer Avatar" 
-    width={150} 
-    height={150} 
-    class="rounded-none shadow-lg border-4 border-white object-cover"
-  />
-  <div>
-    <h1 style="margin: 0;">Hi, I'm 👋</h1>
-    <p style="font-size: 1.1rem; color: gray; margin-top: 0.5rem;">
-      MSc Student in AI x Geophysicist 
-    </p>
+<div style="max-width: 700px; margin: 0 auto; padding: 2rem 0;">
+
+  {/* ── Language toggle ── */}
+  <div style="display: flex; justify-content: flex-end; margin-bottom: 2rem;">
+    <div style="display: flex; border: 0.5px solid #d1d5db; border-radius: 8px; overflow: hidden; background: #f9fafb;">
+      <button id="btn-en" class="lang-btn active" onClick="setLang('en')">EN</button>
+      <button id="btn-zh" class="lang-btn" onClick="setLang('zh')">中文</button>
+    </div>
   </div>
+
+  {/* ── Header ── */}
+  <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2.5rem;">
+    <Image
+      src={myAvatar}
+      alt="Profile photo"
+      width={92}
+      height={92}
+      style="border-radius: 8px; object-fit: cover; flex-shrink: 0; border: 0.5px solid #e5e7eb;"
+    />
+    <div style="flex: 1; min-width: 0;">
+      <p style="font-size: 22px; font-weight: 500; margin: 0 0 4px; color: #111827;"
+         data-en="Heng Wu" data-zh="吴 恒">Heng Wu</p>
+      <p style="font-size: 14px; color: #6b7280; margin: 0 0 3px;"
+         data-en="MSc Student in Artificial Intelligence · Geophysicist"
+         data-zh="人工智能硕士生 · 地球物理学者">MSc Student in Artificial Intelligence · Geophysicist</p>
+      <p style="font-size: 12px; color: #9ca3af; margin: 0 0 14px;"
+         data-en="USTC · China University of Petroleum (Beijing)"
+         data-zh="中国科学技术大学 · 中国石油大学（北京）">USTC · China University of Petroleum (Beijing)</p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="https://github.com/zzzzswh" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>{' '}GitHub
+        </a>
+        <a href="mailto:imwuheng@gmail.com" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>{' '}Email
+        </a>
+        <a href="/cv.pdf" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-en="CV / Resume" data-zh="个人简历">CV / Resume</span>
+        </a>
+        {/* Add Google Scholar link here when available:
+        <a href="https://scholar.google.com/..." class="contact-link">
+          Scholar
+        </a>
+        */}
+      </div>
+    </div>
+  </div>
+
+  {/* ── About ── */}
+  <div style="margin-bottom: 2.5rem;">
+    <div class="section-hd">
+      <span class="section-label" data-en="About" data-zh="简介">About</span>
+      <span class="section-line"></span>
+    </div>
+    <p style="font-size: 15px; color: #374151; line-height: 1.75; margin: 0;"
+       data-en="I am an MSc student in Artificial Intelligence at the University of Science and Technology of China (USTC), advised by Prof. Wu Xinming. I am actively deepening my knowledge at the intersection of geophysics and deep learning, with a focus on seismic forward modeling, inversion, and data processing."
+       data-zh="我是中国科学技术大学人工智能方向的硕士生，师从伍新明教授。目前正积极学习地球物理与人工智能的交叉方向，主要涉及地震正演、反演与数据处理等方面。">I am an MSc student in Artificial Intelligence at the University of Science and Technology of China (USTC), advised by Prof. Wu Xinming. I am actively deepening my knowledge at the intersection of geophysics and deep learning, with a focus on seismic forward modeling, inversion, and data processing.</p>
+  </div>
+
+  {/* ── Education ── */}
+  <div style="margin-bottom: 2.5rem;">
+    <div class="section-hd">
+      <span class="section-label" data-en="Education" data-zh="教育经历">Education</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="edu-grid">
+      <span class="edu-period" data-en="2026 – present" data-zh="2026 年至今">2026 – present</span>
+      <div>
+        <p class="edu-degree" data-en="MSc in Artificial Intelligence" data-zh="人工智能 硕士">MSc in Artificial Intelligence</p>
+        <p class="edu-school" data-en="University of Science and Technology of China (USTC)" data-zh="中国科学技术大学">University of Science and Technology of China (USTC)</p>
+      </div>
+    </div>
+    <div class="edu-grid">
+      <span class="edu-period">2022 – 2026</span>
+      <div>
+        <p class="edu-degree" data-en="BSc in Geophysics" data-zh="地球物理学 学士">BSc in Geophysics</p>
+        <p class="edu-school" data-en="China University of Petroleum, Beijing (CUP)" data-zh="中国石油大学（北京）">China University of Petroleum, Beijing (CUP)</p>
+      </div>
+    </div>
+  </div>
+
+  {/* ── Research Interests ── */}
+  <div style="margin-bottom: 2.5rem;">
+    <div class="section-hd">
+      <span class="section-label" data-en="Research interests" data-zh="研究兴趣">Research interests</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="interest-pills">
+      <span class="pill" data-en="Seismic modeling & processing" data-zh="地震正演模拟与处理">Seismic modeling & processing</span>
+      <span class="pill" data-en="Full waveform inversion" data-zh="全波形反演">Full waveform inversion</span>
+      <span class="pill" data-en="GPU & high-performance computing" data-zh="GPU 与高性能计算">GPU & high-performance computing</span>
+      <span class="pill" data-en="Scientific visualization" data-zh="科学可视化">Scientific visualization</span>
+    </div>
+  </div>
+
+  {/* ── Projects ── */}
+  <div style="margin-bottom: 2.5rem;">
+    <div class="section-hd">
+      <span class="section-label" data-en="Projects" data-zh="项目">Projects</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <a href="https://github.com/zzzzswh/Fomo.jl" target="_blank"
+             style="font-size: 15px; font-weight: 500; color: #111827; text-decoration: none;">Fomo.jl</a>
+          <span style="font-size: 11px; color: #9ca3af;">2024</span>
+        </div>
+        <a href="https://github.com/zzzzswh/Fomo.jl" target="_blank"
+           style="font-size: 12px; color: #9ca3af; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>{' '}zzzzswh/Fomo.jl ↗
+        </a>
+      </div>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+        <span class="tech-tag">Julia</span>
+        <span class="tech-tag">CUDA.jl</span>
+        <span class="tech-tag">Staggered-grid FD</span>
+        <span class="tech-tag">HABC</span>
+      </div>
+      <img src="/assets/wavefield.gif" alt="Wave field animation"
+           style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
+      <p style="font-size: 14px; color: #6b7280; line-height: 1.65; margin: 0;"
+         data-en="2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling. Newly added support for Prof. Yunyue Li's P/S-wave decoupled acoustic-form wave equation."
+         data-zh="基于 CUDA.jl 的二三维弹性与声波方程求解器，采用交错网格有限差分方案与混合吸收边界条件（HABC），实现 GPU 加速地震正演模拟。新支持李云月教授的PS波解耦声波形式方程。">2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling.</p>
+    </div>
+
+    <div class="project-card" style="margin-top: 1rem;">
+      <div class="project-header">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-size: 15px; font-weight: 500; color: #111827;"
+                data-en="First-Break Picking Dataset"
+                data-zh="初至拾取数据集构建">First-Break Picking Dataset</span>
+          <span style="font-size: 11px; color: #9ca3af;">2025 –</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+        <span class="tech-tag">Latent Diffusion Model</span>
+        <span class="tech-tag">Seismic Processing</span>
+        <span class="tech-tag">First Break Picking</span>
+      </div>
+      <img src="/assets/FB_dataset.png" alt="First-break picking dataset overview"
+           style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
+      <p style="font-size: 14px; color: #6b7280; line-height: 1.65; margin: 0;"
+          data-en="Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification."
+          data-zh="通过真实数据收集 + 正演模拟 + 生成式模型构建面向初至拾取任务的带标签数据集，用于深度学习自动拾取模型的训练与评测。">Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification.</p>
+    </div>
+
+  </div>
+
+  {/* ── Skills ── */}
+  <div style="margin-bottom: 2rem;">
+    <div class="section-hd">
+      <span class="section-label" data-en="Skills" data-zh="技能">Skills</span>
+      <span class="section-line"></span>
+    </div>
+    <div>
+      <div class="skill-row">
+        <span class="skill-label" data-en="Languages" data-zh="编程语言">Languages</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Julia</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">MATLAB</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label" data-en="Frameworks" data-zh="框架工具">Frameworks</span>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">CUDA</span>
+          <span class="skill-tag">Geoeast</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label" data-en="Domain" data-zh="专业领域">Domain</span>
+        <div class="skill-tags">
+          <span class="skill-tag" data-en="Seismic data processing" data-zh="地震数据处理">Seismic data processing</span>
+          <span class="skill-tag" data-en="Wave equation simulation" data-zh="波动方程模拟">Wave equation simulation</span>
+          <span class="skill-tag" data-en="Computer Vision" data-zh="计算机视觉">Computer Vision</span>
+          <span class="skill-tag" data-en="CUDA programing" data-zh="CUDA编程">CUDA programing</span>
+          <span class="skill-tag">GeoEast</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-
-## 🎓 Education
-- **Msc in Artificial Intelligence**, University of Science and Technology of China, 2026 ~ 
-- **BSc in Geophysics**, China University of Petroleum (Beijing), 2022-2026
-
-## 💻 Featured Projects
-- [Fomo.jl](https://github.com/zzzzswh/Fomo.jl) 2D/3D Elastic/Acoustic Wave Equation Solver based on CUDA.jl.   
-  Using staggered grid & Hybrid Absorbing Boundary Conditions(HABC).
-
-## 🔬 Research Interests
-- Seismic modeling and processing
-- Artificial Intelligence
-- Scientific visualization
-
-## 🛠 Skills
-
-- **Languages:** Python, Julia, C++, MATLAB
-- **Frameworks & Tools:** PyTorch, Devito, NumPy, CUDA
-- **Domain Expertise:** Seismic forward modeling,

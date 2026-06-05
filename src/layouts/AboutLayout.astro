@@ -28,3 +28,121 @@ const { frontmatter } = Astro.props;
   </main>
   <Footer />
 </Layout>
+
+<style is:global>
+  .lang-btn {
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px 14px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: #9ca3af;
+  }
+  .lang-btn.active {
+    background: #ffffff;
+    color: #111827;
+    font-weight: 500;
+  }
+  .section-hd {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    white-space: nowrap;
+  }
+  .section-line {
+    flex: 1;
+    height: 0.5px;
+    background: #e5e7eb;
+    display: block;
+  }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 6px 20px;
+    align-items: start;
+    margin-bottom: 14px;
+  }
+  .edu-period { font-size: 12px; color: #9ca3af; text-align: right; padding-top: 2px; }
+  .edu-degree { font-size: 14px; font-weight: 500; margin: 0 0 2px; color: #111827; }
+  .edu-school { font-size: 13px; color: #6b7280; margin: 0; }
+  .interest-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-size: 13px;
+    padding: 5px 13px;
+    border: 0.5px solid #d1d5db;
+    border-radius: 100px;
+    color: #374151;
+  }
+  .project-card {
+    border: 0.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 12px;
+  }
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tech-tag {
+    font-size: 11px;
+    padding: 2px 9px;
+    background: #f9fafb;
+    border-radius: 4px;
+    color: #6b7280;
+  }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 8px;
+    align-items: start;
+    margin-bottom: 11px;
+  }
+  .skill-label { font-size: 12px; color: #9ca3af; padding-top: 4px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 0.5px solid #e5e7eb;
+    border-radius: 4px;
+    color: #374151;
+  }
+  .contact-link {
+    font-size: 12px;
+    color: #9ca3af;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  @media (max-width: 560px) {
+    .edu-grid { grid-template-columns: 1fr; }
+    .edu-period { text-align: left; }
+    .skill-row { grid-template-columns: 1fr; }
+    .skill-label { padding-top: 0; }
+  }
+</style>
+
+<script is:inline>
+  function setLang(lang) {
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      var t = el.getAttribute('data-' + lang);
+      if (t) el.textContent = t;
+    });
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  }
+  window.setLang = setLang;
+</script>
