@@ -6,6 +6,31 @@ title: "About Me"
 import { Image } from 'astro:assets';
 import myAvatar from '../assets/images/avatar.jpg';
 
+{/* ── Typography overrides ── */}
+<style is:global>{`
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9ca3af;
+  }
+  /* Chinese labels: drop uppercase + letter-spacing, CJK reads better tight */
+  [lang="zh"] .section-label,
+  .lang-zh .section-label {
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .edu-degree {
+    font-weight: 600;
+    color: #111827;
+  }
+  .edu-school {
+    font-size: 12px;
+    color: #6b7280;
+  }
+`}</style>
+
 <div style="max-width: 700px; margin: 0 auto; padding: 2rem 0;">
 
   {/* ── Language toggle ── */}
@@ -26,14 +51,16 @@ import myAvatar from '../assets/images/avatar.jpg';
       style="border-radius: 8px; object-fit: cover; flex-shrink: 0; border: 0.5px solid #e5e7eb;"
     />
     <div style="flex: 1; min-width: 0;">
-      <p style="font-size: 22px; font-weight: 500; margin: 0 0 4px; color: #111827;"
+      {/* CHANGED: 22px/500 → 26px/700, letter-spacing added */}
+      <p style="font-size: 26px; font-weight: 700; margin: 0 0 5px; color: #111827; letter-spacing: -0.3px;"
          data-en="Heng Wu" data-zh="吴 恒">Heng Wu</p>
-      <p style="font-size: 14px; color: #6b7280; margin: 0 0 3px;"
-         data-en="MSc Student in Artificial Intelligence · Geophysicist"
-         data-zh="人工智能硕士生 · 地球物理学者">MSc Student in Artificial Intelligence · Geophysicist</p>
+      {/* role line: #374151 (body tier) */}
+      <p style="font-size: 14px; color: #374151; font-weight: 500; margin: 0 0 3px;"
+         data-en="MSc Student in Artificial Intelligence, USTC"
+         data-zh="人工智能硕士生 · 中国科学技术大学">MSc Student in Artificial Intelligence, USTC</p>
       <p style="font-size: 12px; color: #9ca3af; margin: 0 0 14px;"
-         data-en="USTC · China University of Petroleum (Beijing)"
-         data-zh="中国科学技术大学 · 中国石油大学（北京）">USTC · China University of Petroleum (Beijing)</p>
+         data-en="Advised by Xinming Wu"
+         data-zh="导师：伍新明">Advised by Xinming Wu</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="https://github.com/zzzzswh" target="_blank" class="contact-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>{' '}GitHub
@@ -61,8 +88,8 @@ import myAvatar from '../assets/images/avatar.jpg';
       <span class="section-line"></span>
     </div>
     <p style="font-size: 15px; color: #374151; line-height: 1.75; margin: 0;"
-       data-en="I am an MSc student in Artificial Intelligence at the University of Science and Technology of China (USTC), advised by Prof. Wu Xinming. I am actively deepening my knowledge at the intersection of geophysics and deep learning, with a focus on seismic forward modeling, inversion, and data processing."
-       data-zh="我是中国科学技术大学人工智能方向的硕士生，师从伍新明教授。目前正积极学习地球物理与人工智能的交叉方向，主要涉及地震正演、反演与数据处理等方面。">I am an MSc student in Artificial Intelligence at the University of Science and Technology of China (USTC), advised by Prof. Wu Xinming. I am actively deepening my knowledge at the intersection of geophysics and deep learning, with a focus on seismic forward modeling, inversion, and data processing.</p>
+       data-en="My current focus is the intersection of geophysics and deep learning — seismic forward modeling, inversion, and data processing."
+       data-zh="目前我主要在地球物理与人工智能的交叉方向上学习与探索，研究兴趣包括地震正演、反演与数据处理。">My current focus is the intersection of geophysics and deep learning — seismic forward modeling, inversion, and data processing.</p>
   </div>
 
   {/* ── Education ── */}
@@ -74,15 +101,15 @@ import myAvatar from '../assets/images/avatar.jpg';
     <div class="edu-grid">
       <span class="edu-period" data-en="2026 – present" data-zh="2026 年至今">2026 – present</span>
       <div>
-        <p class="edu-degree" data-en="MSc in Artificial Intelligence" data-zh="人工智能 硕士">MSc in Artificial Intelligence</p>
+        <p class="edu-degree" data-en="MSc in Artificial Intelligence" data-zh="人工智能硕士">MSc in Artificial Intelligence</p>
         <p class="edu-school" data-en="University of Science and Technology of China (USTC)" data-zh="中国科学技术大学">University of Science and Technology of China (USTC)</p>
       </div>
     </div>
     <div class="edu-grid">
       <span class="edu-period">2022 – 2026</span>
       <div>
-        <p class="edu-degree" data-en="BSc in Geophysics" data-zh="地球物理学 学士">BSc in Geophysics</p>
-        <p class="edu-school" data-en="China University of Petroleum, Beijing (CUP)" data-zh="中国石油大学（北京）">China University of Petroleum, Beijing (CUP)</p>
+        <p class="edu-degree" data-en="BSc in Geophysics" data-zh="地球物理学学士">BSc in Geophysics</p>
+        <p class="edu-school" data-en="China University of Petroleum (Beijing)" data-zh="中国石油大学（北京）">China University of Petroleum (Beijing)</p>
       </div>
     </div>
   </div>
@@ -94,6 +121,7 @@ import myAvatar from '../assets/images/avatar.jpg';
       <span class="section-line"></span>
     </div>
     <div class="interest-pills">
+      <span class="pill" data-en="AI for Geoscience" data-zh="AI for Geoscience">AI for Geoscience</span>
       <span class="pill" data-en="Seismic modeling & processing" data-zh="地震正演模拟与处理">Seismic modeling & processing</span>
       <span class="pill" data-en="Full waveform inversion" data-zh="全波形反演">Full waveform inversion</span>
       <span class="pill" data-en="GPU & high-performance computing" data-zh="GPU 与高性能计算">GPU & high-performance computing</span>
@@ -111,8 +139,9 @@ import myAvatar from '../assets/images/avatar.jpg';
     <div class="project-card">
       <div class="project-header">
         <div style="display: flex; align-items: baseline; gap: 10px;">
+          {/* CHANGED: 15px/500 → 16px/600 */}
           <a href="https://github.com/zzzzswh/Fomo.jl" target="_blank"
-             style="font-size: 15px; font-weight: 500; color: #111827; text-decoration: none;">Fomo.jl</a>
+             style="font-size: 16px; font-weight: 600; text-decoration: none;">Fomo.jl</a>
           <span style="font-size: 11px; color: #9ca3af;">2024</span>
         </div>
         <a href="https://github.com/zzzzswh/Fomo.jl" target="_blank"
@@ -130,13 +159,14 @@ import myAvatar from '../assets/images/avatar.jpg';
            style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
       <p style="font-size: 14px; color: #6b7280; line-height: 1.65; margin: 0;"
          data-en="2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling. Newly added support for Prof. Yunyue Li's P/S-wave decoupled acoustic-form wave equation."
-         data-zh="基于 CUDA.jl 的二三维弹性与声波方程求解器，采用交错网格有限差分方案与混合吸收边界条件（HABC），实现 GPU 加速地震正演模拟。新支持李云月教授的PS波解耦声波形式方程。">2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling.</p>
+         data-zh="基于 CUDA.jl 的二维 / 三维弹性与声波方程求解器，采用交错网格有限差分方案与混合吸收边界条件（HABC），实现 GPU 加速地震正演模拟。新增了对李云月教授 P/S 波解耦声波形式方程的支持。">2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling. Newly added support for Prof. Yunyue Li's P/S-wave decoupled acoustic-form wave equation.</p>
     </div>
 
     <div class="project-card" style="margin-top: 1rem;">
       <div class="project-header">
         <div style="display: flex; align-items: baseline; gap: 10px;">
-          <span style="font-size: 15px; font-weight: 500; color: #111827;"
+          {/* CHANGED: 15px/500 → 16px/600 */}
+          <span style="font-size: 16px; font-weight: 600; color: var(--accent);"
                 data-en="First-Break Picking Dataset"
                 data-zh="初至拾取数据集构建">First-Break Picking Dataset</span>
           <span style="font-size: 11px; color: #9ca3af;">2025 –</span>
@@ -151,7 +181,7 @@ import myAvatar from '../assets/images/avatar.jpg';
            style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
       <p style="font-size: 14px; color: #6b7280; line-height: 1.65; margin: 0;"
           data-en="Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification."
-          data-zh="通过真实数据收集 + 正演模拟 + 生成式模型构建面向初至拾取任务的带标签数据集，用于深度学习自动拾取模型的训练与评测。">Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification.</p>
+          data-zh="通过真实数据采集、正演模拟与生成式模型，构建面向初至拾取任务的带标签数据集，用于深度学习自动拾取模型的训练与评测。">Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification.</p>
     </div>
 
   </div>
@@ -177,7 +207,12 @@ import myAvatar from '../assets/images/avatar.jpg';
         <div class="skill-tags">
           <span class="skill-tag">PyTorch</span>
           <span class="skill-tag">CUDA</span>
-          <span class="skill-tag">Geoeast</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label" data-en="Software" data-zh="软件">Software</span>
+        <div class="skill-tags">
+          <span class="skill-tag">GeoEast</span>
         </div>
       </div>
       <div class="skill-row">
@@ -186,8 +221,7 @@ import myAvatar from '../assets/images/avatar.jpg';
           <span class="skill-tag" data-en="Seismic data processing" data-zh="地震数据处理">Seismic data processing</span>
           <span class="skill-tag" data-en="Wave equation simulation" data-zh="波动方程模拟">Wave equation simulation</span>
           <span class="skill-tag" data-en="Computer Vision" data-zh="计算机视觉">Computer Vision</span>
-          <span class="skill-tag" data-en="CUDA programing" data-zh="CUDA编程">CUDA programing</span>
-          <span class="skill-tag">GeoEast</span>
+          {/* removed CUDA programming here — CUDA already listed under Frameworks */}
         </div>
       </div>
     </div>

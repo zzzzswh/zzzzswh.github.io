@@ -143,6 +143,7 @@ const { frontmatter } = Astro.props;
     });
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
   }
   window.setLang = setLang;
 </script>
