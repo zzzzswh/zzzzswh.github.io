@@ -5,6 +5,7 @@ title: "About Me"
 
 import { Image } from 'astro:assets';
 import myAvatar from '../assets/images/avatar.jpg';
+import fbDataset from '../assets/images/FB_dataset.png';
 
 {/* ── Typography overrides ── */}
 <style is:global>{`
@@ -155,8 +156,8 @@ import myAvatar from '../assets/images/avatar.jpg';
         <span class="tech-tag">Staggered-grid FD</span>
         <span class="tech-tag">HABC</span>
       </div>
-      <img src="/assets/wavefield.gif" alt="Wave field animation"
-           style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
+      <video src="/assets/wavefield.mp4" autoplay loop muted playsinline
+             style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
       <p style="font-size: 14px; color: #6b7280; line-height: 1.65; margin: 0;"
          data-en="2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling. Newly added support for Prof. Yunyue Li's P/S-wave decoupled acoustic-form wave equation."
          data-zh="基于 CUDA.jl 的二维 / 三维弹性与声波方程求解器，采用交错网格有限差分方案与混合吸收边界条件（HABC），实现 GPU 加速地震正演模拟。新增了对李云月教授 P/S 波解耦声波形式方程的支持。">2D/3D elastic and acoustic wave equation solver built on CUDA.jl. Implements staggered-grid finite difference with hybrid absorbing boundary conditions (HABC) for GPU-accelerated seismic forward modeling. Newly added support for Prof. Yunyue Li's P/S-wave decoupled acoustic-form wave equation.</p>
@@ -177,8 +178,8 @@ import myAvatar from '../assets/images/avatar.jpg';
         <span class="tech-tag">Seismic Processing</span>
         <span class="tech-tag">First Break Picking</span>
       </div>
-      <img src="/assets/FB_dataset.png" alt="First-break picking dataset overview"
-           style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
+      <Image src={fbDataset} alt="First-break picking dataset overview"
+             width={1200} style="width:100%;border-radius:6px;border:0.5px solid #e5e7eb;margin-bottom:12px;" />
       <p style="font-size: 14px; color: #6b7280; line-height: 1.65; margin: 0;"
           data-en="Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification."
           data-zh="通过真实数据采集、正演模拟与生成式模型，构建面向初至拾取任务的带标签数据集，用于深度学习自动拾取模型的训练与评测。">Building a labeled dataset for first-break picking through real-data collection, forward modeling, and generative models — providing first-arrival labels to train and benchmark deep learning models for automatic first-break identification.</p>
